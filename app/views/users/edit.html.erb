@@ -1,0 +1,25 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>errors occurred
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<h2>User info</h2>
+<%= form_with model: @user, local:true do |f| %>
+  <p>Name <br>
+<%= flash[:notice] %>
+  <%= f.text_field :name %></p>
+  <p><label for="inputImage">Image</label><br>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></p>
+  <p>Introduction <br>
+  <%= f.text_area :introduction %></p>
+  <p> </p>
+  <%= f.submit 'Update User' ,class:"btn btn-secondary"%>
+<% end %>
+</div>
+</div>
+</div>
